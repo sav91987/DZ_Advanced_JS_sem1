@@ -91,17 +91,17 @@ class Client {
 const dishes = new Map();
 const cooks = new Map();
 
-//0 - пицца, 1 - суши, 2 - десерты
+//1 - пицца, 2 - суши, 3 - десерты
 
 dishes
-    .set("Пепперони", 0)
-    .set("Маргарита", 0)
-    .set("Калифорния", 1)
-    .set("Филадельфия", 1)
-    .set("Тирамису", 2)
-    .set("Чизкейк", 2);
+    .set("Пепперони", 1)
+    .set("Маргарита", 1)
+    .set("Калифорния", 2)
+    .set("Филадельфия", 2)
+    .set("Тирамису", 3)
+    .set("Чизкейк", 3);
 
-cooks.set(0, "Виктор").set(1, "Ольга").set(2, "Дмитрий");
+cooks.set(1, "Виктор").set(2, "Ольга").set(3, "Дмитрий");
 
 const clientAlexey = new Client("Алексей");
 clientAlexey.orders.set(clientAlexey, ["Пепперони", "Тирамису"]);
@@ -110,15 +110,20 @@ const clientMaria = new Client("Мария");
 clientMaria.orders.set(clientMaria, ["Калифорния", "Маргарита"]);
 
 const clientIrina = new Client("Ирина");
-clientIrina.orders.set(clientIrina, ["Чизкейк", "Маргарита"]);
+clientIrina.orders.set(clientIrina, ["Чизкейк", "Сосиска в тесте"]);
 
 function showOrder(client) {
     let orderMessage = `Клиент ${client.name} заказал(а):
 `;
     for (const order of client.orders.get(client)) {
         const dish = dishes.get(order);
-        orderMessage += `${order} - Готовит: ${cooks.get(dish)}
+        if (!dish) {
+            console.error(`Блюда "${order}" не найдено.`);
+        } else {
+            orderMessage += `${order} - Готовит: ${cooks.get(dish)}
 `;
+        }
+        
     }
 
     console.log(orderMessage);
