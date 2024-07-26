@@ -91,17 +91,19 @@ class Client {
 const dishes = new Map();
 const cooks = new Map();
 
-//1 - пицца, 2 - суши, 3 - десерты
+pizzaId = 1;
+sushiId = 2;
+dessertId = 3;
 
 dishes
-    .set("Пепперони", 1)
-    .set("Маргарита", 1)
-    .set("Калифорния", 2)
-    .set("Филадельфия", 2)
-    .set("Тирамису", 3)
-    .set("Чизкейк", 3);
+    .set("Пепперони", pizzaId)
+    .set("Маргарита", pizzaId)
+    .set("Калифорния", sushiId)
+    .set("Филадельфия", sushiId)
+    .set("Тирамису", dessertId)
+    .set("Чизкейк", dessertId);
 
-cooks.set(1, "Виктор").set(2, "Ольга").set(3, "Дмитрий");
+cooks.set(pizzaId, "Виктор").set(sushiId, "Ольга").set(dessertId, "Дмитрий");
 
 const clientAlexey = new Client("Алексей");
 clientAlexey.orders.set(clientAlexey, ["Пепперони", "Тирамису"]);
