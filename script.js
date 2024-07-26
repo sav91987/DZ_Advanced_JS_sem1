@@ -114,7 +114,7 @@ clientMaria.orders.set(clientMaria, ["Калифорния", "Маргарита
 const clientIrina = new Client("Ирина");
 clientIrina.orders.set(clientIrina, ["Чизкейк", "Сосиска в тесте"]);
 
-function showOrder(client) {
+const showOrder = (client) => {
     let orderMessage = `Клиент ${client.name} заказал(а):
 `;
     for (const order of client.orders.get(client)) {
@@ -125,11 +125,9 @@ function showOrder(client) {
             orderMessage += `${order} - Готовит: ${cooks.get(dish)}
 `;
         }
-        
     }
-
     console.log(orderMessage);
-}
+};
 
 showOrder(clientAlexey);
 showOrder(clientMaria);
